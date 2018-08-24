@@ -4,4 +4,5 @@
 
 LIST=$(networksetup -listallhardwareports)
 INTERFACE=$(getEthernetInterface "$LIST")
+DEVICE=$(getEthernetName)
 NAME=$(getEthernetName "$LIST")

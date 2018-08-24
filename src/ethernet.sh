@@ -17,7 +17,7 @@ if [ "$(getEthernetState "$INTERFACE")" == 0 ]; then
 fi
 
 # Get network configuration
-NETINFO=$(networksetup -getinfo Ethernet)
+NETINFO=$(networksetup -getinfo "$DEVICE")
 NETCONFIG=$(getConnectionConfig "$NETINFO")
 
 MAC=$(getEthernetMac)

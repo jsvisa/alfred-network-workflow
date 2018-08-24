@@ -41,7 +41,7 @@ getWifiName() {
 
 getEthernetName() {
   local LIST=${1-$(networksetup -listallhardwareports)}
-  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$")
+  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$|LAN$")
   echo "$DETAILS" | awk '/Hardware / {print substr($0, index($0, $3))}'
 }
 
@@ -53,7 +53,7 @@ getWifiInterface() {
 
 getEthernetInterface() {
   local LIST=${1-$(networksetup -listallhardwareports)}
-  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$")
+  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$|LAN$")
   echo "$DETAILS" | grep -m 1 -o -e en[0-9]
 }
 
@@ -65,7 +65,7 @@ getWifiMac() {
 
 getEthernetMac() {
   local LIST=${1-$(networksetup -listallhardwareports)}
-  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$")
+  local DETAILS=$(echo "$LIST" | grep -A 2 -E "Ethernet$|LAN$")
   echo "$DETAILS" | awk '/Ethernet Address: / {print substr($0, index($0, $3))}'
 }
 
